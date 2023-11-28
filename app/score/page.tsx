@@ -9,7 +9,7 @@ export default function Home() {
           <div className='h-[56px] w-[56px] rounded-[8px] flex flex-row mr-[24px] items-center justify-center bg-[#FFF1E9]'>
             <Image src="/images/icon-accessibility.svg" className="inline" height="40" width="40" alt="HTML" />
           </div>
-          <div className='inline'>Accessibility</div>
+          <div className='inline dark:text-[#FFFFFF]'>Accessibility</div>
         </div>
         <div className='w-full flex items-center justify-end text-right'>
           <Image src="/images/icon-sun-dark.svg" className="inline" height="24" width="24" alt="HTML" />
@@ -23,21 +23,21 @@ export default function Home() {
 
       <div className='grid w-full grid-cols-2'>
         <div className='text-left w-[465px] text-[64px] text-[#313E51]'>
-          <span className='block font-light'>Quiz completed</span>
-          <span className='font-medium '>You scored...</span>
+          <span className='block font-light dark:text-[#FFFFFF]'>Quiz completed</span>
+          <span className='font-medium dark:text-[#FFFFFF]'>You scored...</span>
 
         </div>
         <div>
           <Link href="/">
-            <div className='px-[20px] mb-[24px] h-[388px] shadow flex flex-col items-center justify-center bg-white align-middle rounded-[24px] text-[28px]'>
+            <div className='px-[20px] mb-[24px] h-[388px] shadow flex flex-col items-center justify-center bg-white dark:bg-[#3B4D66] align-middle rounded-[24px] text-[28px]'>
               <div className='text-[28px] flex items-center font-medium text-[#313E51]'>
                 <div className='h-[56px] w-[56px] rounded-[8px] flex flex-row mr-[24px] items-center justify-center bg-[#FFF1E9]'>
                   <Image src="/images/icon-accessibility.svg" className="inline" height="40" width="40" alt="HTML" />
                 </div>
-                <div className='inline'>Accessibility</div>
+                <div className='inline dark:text-white'>Accessibility</div>
               </div>
-              <span className='text-[144px] p-6 leading-none font-medium text-[#313E51]'>8</span>
-              <span className='text-[#626C7F] font-light text-[24px]'>out of 10</span>
+              <span className='text-[144px] p-6 leading-none font-medium text-[#313E51] dark:text-white'>8</span>
+              <span className='text-[#626C7F] font-light text-[24px] dark:text-white'>out of 10</span>
             </div>
           </Link>
           <Link href="/">

@@ -121,7 +121,7 @@ export default function Page({ params }: { params: { category: string, question:
     <main className="flex flex-col items-center justify-between pt-[80px] w-[1160px] m-auto">
       <div className='grid w-full grid-cols-2 mb-[90px]'>
         <Link href="/">
-          <div className='text-[28px] flex items-center font-medium text-[#313E51]'>
+          <div className='text-[28px] flex items-center font-medium text-[#313E51] dark:text-[#FFFFFF]'>
             <div className={'h-[56px] w-[56px] rounded-[8px] flex flex-row mr-[24px] items-center justify-center ' + getIconInfo().color}>
               <Image src={getIconInfo().path} className="inline" height="40" width="40" alt="HTML" />
             </div>
@@ -140,43 +140,43 @@ export default function Page({ params }: { params: { category: string, question:
 
       <div className='grid w-full grid-cols-2'>
         <div className='text-left w-[465px]'>
-          <div className="italic mb-[40px] grey-navy">
+          <div className="italic mb-[40px] grey-navy dark:text-[#FFFFFF]">
             Question {params.question} of 10.
           </div>
-          <p className="font-light text-[36px]">
+          <p className="font-light text-[36px] dark:text-[#FFFFFF]">
             {quizQuestion.question}
           </p>
         </div>
         <div>
-          <button className={'group cursor-pointer px-[20px] w-full mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px] focus:outline-none focus:ring ' + getIconInfo().ringColor}>
+          <button className={'group cursor-pointer px-[20px] w-full mb-[24px] h-[92px] shadow flex items-center bg-white dark:bg-[#3B4D66] align-middle rounded-[24px] text-[28px] focus:outline-none focus:ring ' + getIconInfo().ringColor}>
             <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().focusText + ' ' + getIconInfo().focusBg + ' ' + getIconInfo().activeBg + ' ' + getIconInfo().activeText + ' ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
               A
             </div>
-            <p className='inline align-middle p-[32px]'>
+            <p className='inline text-left align-middle p-[32px] dark:text-[#FFFFFF]'>
               {quizQuestion.options[0]}
             </p>
           </button>
-          <button className={'group cursor-pointer px-[20px] w-full mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px] focus:outline-none focus:ring ' + getIconInfo().ringColor}>
+          <button className={'group text-left cursor-pointer px-[20px] w-full mb-[24px] h-[92px] shadow flex items-center bg-white dark:bg-[#3B4D66] align-middle rounded-[24px] text-[28px] focus:outline-none focus:ring ' + getIconInfo().ringColor}>
             <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().focusText + ' ' + getIconInfo().focusBg + ' ' + getIconInfo().activeBg + ' ' + getIconInfo().activeText + ' ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
               A
             </div>
-            <p className='inline align-middle p-[32px]'>
+            <p className='inline align-middle p-[32px] dark:text-[#FFFFFF]'>
               {quizQuestion.options[1]}
             </p>
           </button>
-          <button className={'group cursor-pointer px-[20px] w-full mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px] focus:outline-none focus:ring ' + getIconInfo().ringColor}>
+          <button className={'group text-left cursor-pointer px-[20px] w-full mb-[24px] h-[92px] shadow flex items-center bg-white dark:bg-[#3B4D66] align-middle rounded-[24px] text-[28px] focus:outline-none focus:ring ' + getIconInfo().ringColor}>
             <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().focusText + ' ' + getIconInfo().focusBg + ' ' + getIconInfo().activeBg + ' ' + getIconInfo().activeText + ' ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
               A
             </div>
-            <p className='inline align-middle p-[32px]'>
+            <p className='inline align-middle p-[32px] dark:text-[#FFFFFF]'>
               {quizQuestion.options[2]}
             </p>
           </button>
-          <button className={'group cursor-pointer px-[20px] w-full mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px] focus:outline-none focus:ring ' + getIconInfo().ringColor}>
+          <button className={'group text-left cursor-pointer px-[20px] w-full mb-[24px] h-[92px] shadow flex items-center bg-white dark:bg-[#3B4D66] align-middle rounded-[24px] text-[28px] focus:outline-none focus:ring ' + getIconInfo().ringColor}>
             <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().focusText + ' ' + getIconInfo().focusBg + ' ' + getIconInfo().activeBg + ' ' + getIconInfo().activeText + ' ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
               A
             </div>
-            <p className='inline align-middle p-[32px]'>
+            <p className='inline align-middle p-[32px] dark:text-[#FFFFFF]'>
               {quizQuestion.options[3]}
             </p>
           </button>

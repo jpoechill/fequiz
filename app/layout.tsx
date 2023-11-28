@@ -14,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className={`${rubik.variable} font-sans bg-cover bg-[url('../public/images/pattern-background-desktop-light.svg')]`}>{children}</body>
+      <body className={`${rubik.variable} font-sans bg-cover  dark:bg-[#313E51] dark:bg-[url('../public/images/pattern-background-desktop-dark.svg')] bg-[url('../public/images/pattern-background-desktop-light.svg')]`}>
+        {children}
+      </body>
     </html>
   )
 }
