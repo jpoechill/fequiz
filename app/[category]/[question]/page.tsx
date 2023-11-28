@@ -58,7 +58,7 @@ export default function Page({ params }: { params: { category: string, question:
             <div className={'h-[56px] w-[56px] rounded-[8px] flex flex-row mr-[24px] items-center justify-center ' + getIconInfo().color}>
               <Image src={getIconInfo().path} className="inline" height="40" width="40" alt="HTML" />
             </div>
-            <div className='inline'>{quiz.title}</div>
+            <div className='inline'>{quiz.title || 'No title'}</div>
           </div>
         </Link>
         <div className='w-full flex items-center justify-end text-right'>
