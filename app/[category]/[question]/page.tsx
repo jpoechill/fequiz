@@ -32,28 +32,38 @@ export default function Page({ params }: { params: { category: string, question:
     }
   }
 
-  function getIconInfo(): { path: string; color: string; } {
+  function getIconInfo(): { path: string; color: string; hoverBg: string; hoverText: string; } {
     let iconInfo = {
       path: '',
-      color: ''
+      color: '',
+      hoverBg: '',
+      hoverText: ''
     }
 
     switch (params.category) {
       case 'html':
         iconInfo.path = '/images/icon-html.svg'
         iconInfo.color = 'bg-[#FFF1E9]'
+        iconInfo.hoverBg = 'group-hover:bg-[#FFF1E9]'
+        iconInfo.hoverText = 'group-hover:text-[#FF7E35]'
         break;
       case 'css':
         iconInfo.path = '/images/icon-css.svg'
         iconInfo.color = 'bg-[#E0FDEF]'
+        iconInfo.hoverBg = 'group-hover:bg-[#E0FDEF]'
+        iconInfo.hoverText = 'group-hover:text-[#2FD887]'
         break;
       case 'javascript':
         iconInfo.path = '/images/icon-js.svg'
         iconInfo.color = 'bg-[#EBF0FF]'
+        iconInfo.hoverBg = 'group-hover:bg-[#EBF0FF]'
+        iconInfo.hoverText = 'group-hover:text-[#306AFF]'
         break;
       case 'accessibility':
         iconInfo.path = '/images/icon-accessibility.svg'
         iconInfo.color = 'bg-[#F6E7FF]'
+        iconInfo.hoverBg = 'group-hover:bg-[#F6E7FF]'
+        iconInfo.hoverText = 'group-hover:text-[#A729F5]'
         break;
     }
 
@@ -91,32 +101,32 @@ export default function Page({ params }: { params: { category: string, question:
           </p>
         </div>
         <div>
-          <div className='cursor-pointer px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
-            <div className='flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F]'>
+          <div className='group cursor-pointer px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
+            <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F]' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
               A
             </div>
             <p className='inline align-middle p-[32px]'>
               {quizQuestion.options[0]}
             </p>
           </div>
-          <div className='cursor-pointer px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
-            <div className='flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F]'>
+          <div className='group cursor-pointer px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
+            <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
               B
             </div>
             <p className='inline align-middle p-[32px]'>
               {quizQuestion.options[1]}
             </p>
           </div>
-          <div className='cursor-pointer px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
-            <div className='flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F]'>
+          <div className='group cursor-pointer px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
+            <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
               C
             </div>
             <p className='inline align-middle p-[32px]'>
               {quizQuestion.options[2]}
             </p>
           </div>
-          <div className='cursor-pointer px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
-            <div className='flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F]'>
+          <div className='group cursor-pointer px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
+            <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
               D
             </div>
             <p className='inline align-middle p-[32px]'>
