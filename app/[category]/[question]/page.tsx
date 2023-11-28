@@ -8,9 +8,19 @@ import data from '../../../api/data.json';
 export default function Page({ params }: { params: { category: string, question: string } }) {
   const router = useRouter()
 
-  console.log(data)
+  interface QuizItem {
+    title: string;
+    icon: string;
+    questions: Questions[];
+  }
 
-  let quiz = data.quizzes?.find(category => category.title.toLowerCase() === params.category)
+  interface Questions {
+    question: string;
+    options: string[];
+    answer: string;
+  }
+
+  let quiz: QuizItem = data.quizzes?.find(category => category.title.toLowerCase() === params.category)
   let quizQuestion = quiz?.questions[Number(params.question)] || 0;
 
   function getNextPageNum(): string {
