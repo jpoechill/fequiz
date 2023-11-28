@@ -1,7 +1,18 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link';
+// import { useState } from "react";
 
 export default function Home() {
+  // const [countClick, setCountClick] = useState(0);
+
+  // // Function to change the value of state on  
+  // // click of button 
+  // const countClickHandler = () => {
+  //   setCountClick(countClick + 1);
+  // };
+
   return (
     <main className="flex flex-col items-center justify-between pt-[80px] w-[1160px] m-auto">
       <div className='w-full flex items-center justify-end text-right mb-[90px] h-[56px]'>
@@ -27,7 +38,7 @@ export default function Home() {
           </span>
         </div>
         <div>
-          <Link href="/questions">
+          <Link href="/html/0">
             <div className='px-[20px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
               <div className='h-[56px] w-[56px] rounded-[8px] flex items-center justify-center bg-[#FFF1E9]'>
                 <Image src="/images/icon-html.svg" className="inline" height="40" width="40" alt="HTML" />
@@ -37,9 +48,9 @@ export default function Home() {
               </p>
             </div>
           </Link>
-          <Link href="/questions">
+          <Link href="/css/0">
             <div className='px-[20px] mt-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
-              <div className='h-[56px] w-[56px] rounded-[8px] flex items-center justify-center bg-[#FFF1E9]'>
+              <div className='h-[56px] w-[56px] rounded-[8px] flex items-center justify-center bg-[#E0FDEF]'>
                 <Image src="/images/icon-css.svg" className="inline" height="40" width="40" alt="HTML" />
               </div>
               <p className='inline align-middle p-[32px]'>
@@ -47,22 +58,26 @@ export default function Home() {
               </p>
             </div>
           </Link>
-          <div className='px-[20px] mt-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
-            <div className='h-[56px] w-[56px] rounded-[8px] flex items-center justify-center bg-[#FFF1E9]'>
-              <Image src="/images/icon-js.svg" className="inline" height="40" width="40" alt="HTML" />
+          <Link href="/javascript/0">
+            <div className='px-[20px] mt-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
+              <div className='h-[56px] w-[56px] rounded-[8px] flex items-center justify-center bg-[#EBF0FF]'>
+                <Image src="/images/icon-js.svg" className="inline" height="40" width="40" alt="HTML" />
+              </div>
+              <p className='inline align-middle p-[32px]'>
+                Javascript
+              </p>
             </div>
-            <p className='inline align-middle p-[32px]'>
-              Javascript
-            </p>
-          </div>
-          <div className='px-[20px] mt-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
-            <div className='h-[56px] w-[56px] rounded-[8px] flex items-center justify-center bg-[#FFF1E9]'>
-              <Image src="/images/icon-accessibility.svg" className="inline" height="40" width="40" alt="HTML" />
+          </Link>
+          <Link href="/accessibility/0">
+            <div className='px-[20px] mt-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
+              <div className='h-[56px] w-[56px] rounded-[8px] flex items-center justify-center bg-[#F6E7FF]'>
+                <Image src="/images/icon-accessibility.svg" className="inline" height="40" width="40" alt="HTML" />
+              </div>
+              <p className='inline align-middle p-[32px]'>
+                Accessibility
+              </p>
             </div>
-            <p className='inline align-middle p-[32px]'>
-              Accessibility
-            </p>
-          </div>
+          </Link>
         </div>
       </div>
     </main>
