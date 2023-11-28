@@ -32,38 +32,85 @@ export default function Page({ params }: { params: { category: string, question:
     }
   }
 
-  function getIconInfo(): { path: string; color: string; hoverBg: string; hoverText: string; } {
+  function getIconInfo(): {
+    path: string;
+    color: string;
+    activeBg: string;
+    focusText: string;
+    activeText: string;
+    ringColor: string;
+    focusBg: string;
+    hoverText: string;
+    bgBtn: string;
+    hoverBg: string;
+    activeBgBtn: string;
+  } {
     let iconInfo = {
       path: '',
       color: '',
+      activeBg: '',
+      focusText: '',
+      focusBg: '',
+      activeText: '',
+      ringColor: '',
+      hoverText: '',
       hoverBg: '',
-      hoverText: ''
+      bgBtn: '',
+      activeBgBtn: ''
     }
 
     switch (params.category) {
       case 'html':
         iconInfo.path = '/images/icon-html.svg'
         iconInfo.color = 'bg-[#FFF1E9]'
-        iconInfo.hoverBg = 'group-hover:bg-[#FFF1E9]'
+        iconInfo.activeBg = 'group-active:bg-[#FF7E35]'
+        iconInfo.focusText = 'group-focus:text-[#FFFFFF]'
+        iconInfo.focusBg = 'group-focus:bg-[#FF7E35]'
+        iconInfo.activeText = 'group-active:text-[#FFFFFF]'
+        iconInfo.ringColor = 'focus:ring-[#FF7E35]'
         iconInfo.hoverText = 'group-hover:text-[#FF7E35]'
+        iconInfo.hoverBg = 'group-hover:bg-[#FFF1E9]'
+        iconInfo.bgBtn = 'bg-[#FF7E35]'
+        iconInfo.activeBgBtn = 'active:bg-[#FF7E35] active:opacity-50'
         break;
       case 'css':
         iconInfo.path = '/images/icon-css.svg'
         iconInfo.color = 'bg-[#E0FDEF]'
-        iconInfo.hoverBg = 'group-hover:bg-[#E0FDEF]'
+        iconInfo.activeBg = 'group-active:bg-[#2FD887]'
+        iconInfo.focusText = 'group-focus:text-[#FFFFFF]'
+        iconInfo.focusBg = 'group-focus:bg-[#2FD887]'
+        iconInfo.activeText = 'group-active:text-[#FFFFFF]'
+        iconInfo.ringColor = 'focus:ring-[#2FD887]'
         iconInfo.hoverText = 'group-hover:text-[#2FD887]'
+        iconInfo.hoverBg = 'group-hover:bg-[#E0FDEF]'
+        iconInfo.bgBtn = 'bg-[#2FD887]'
+        iconInfo.activeBgBtn = 'active:bg-[#2FD887] active:opacity-50'
         break;
       case 'javascript':
         iconInfo.path = '/images/icon-js.svg'
         iconInfo.color = 'bg-[#EBF0FF]'
-        iconInfo.hoverBg = 'group-hover:bg-[#EBF0FF]'
+        iconInfo.activeBg = 'group-hover:bg-[#EBF0FF]'
+        iconInfo.focusText = 'group-focus:text-[#FFFFFF]'
+        iconInfo.focusBg = 'group-focus:bg-[#306AFF]'
+        iconInfo.activeText = 'group-active:text-[#FFFFFF]'
+        iconInfo.ringColor = 'focus:ring-[#306AFF]'
         iconInfo.hoverText = 'group-hover:text-[#306AFF]'
+        iconInfo.hoverBg = 'group-hover:bg-[#E0FDEF]'
+        iconInfo.bgBtn = 'bg-[#306AFF]'
+        iconInfo.activeBgBtn = 'active:bg-[#306AFF] active:opacity-50'
         break;
       case 'accessibility':
         iconInfo.path = '/images/icon-accessibility.svg'
         iconInfo.color = 'bg-[#F6E7FF]'
-        iconInfo.hoverBg = 'group-hover:bg-[#F6E7FF]'
+        iconInfo.activeBg = 'group-hover:bg-[#F6E7FF]'
+        iconInfo.focusText = 'group-focus:text-[#FFFFFF]'
+        iconInfo.focusBg = 'group-focus:bg-[#A729F5]'
+        iconInfo.activeText = 'group-active:text-[#FFFFFF]'
+        iconInfo.ringColor = 'focus:ring-[#A729F5]'
         iconInfo.hoverText = 'group-hover:text-[#A729F5]'
+        iconInfo.hoverBg = 'group-hover:bg-[#E0FDEF]'
+        iconInfo.bgBtn = 'bg-[#A729F5]'
+        iconInfo.activeBgBtn = 'active:bg-[#A729F5] active:opacity-50'
         break;
     }
 
@@ -101,44 +148,44 @@ export default function Page({ params }: { params: { category: string, question:
           </p>
         </div>
         <div>
-          <div className='group cursor-pointer px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
-            <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F]' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
+          <button className={'group cursor-pointer px-[20px] w-full mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px] focus:outline-none focus:ring ' + getIconInfo().ringColor}>
+            <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().focusText + ' ' + getIconInfo().focusBg + ' ' + getIconInfo().activeBg + ' ' + getIconInfo().activeText + ' ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
               A
             </div>
             <p className='inline align-middle p-[32px]'>
               {quizQuestion.options[0]}
             </p>
-          </div>
-          <div className='group cursor-pointer px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
-            <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
-              B
+          </button>
+          <button className={'group cursor-pointer px-[20px] w-full mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px] focus:outline-none focus:ring ' + getIconInfo().ringColor}>
+            <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().focusText + ' ' + getIconInfo().focusBg + ' ' + getIconInfo().activeBg + ' ' + getIconInfo().activeText + ' ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
+              A
             </div>
             <p className='inline align-middle p-[32px]'>
               {quizQuestion.options[1]}
             </p>
-          </div>
-          <div className='group cursor-pointer px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
-            <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
-              C
+          </button>
+          <button className={'group cursor-pointer px-[20px] w-full mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px] focus:outline-none focus:ring ' + getIconInfo().ringColor}>
+            <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().focusText + ' ' + getIconInfo().focusBg + ' ' + getIconInfo().activeBg + ' ' + getIconInfo().activeText + ' ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
+              A
             </div>
             <p className='inline align-middle p-[32px]'>
               {quizQuestion.options[2]}
             </p>
-          </div>
-          <div className='group cursor-pointer px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px]'>
-            <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
-              D
+          </button>
+          <button className={'group cursor-pointer px-[20px] w-full mb-[24px] h-[92px] shadow flex items-center bg-white align-middle rounded-[24px] text-[28px] focus:outline-none focus:ring ' + getIconInfo().ringColor}>
+            <div className={'flex shrink-0 h-[56px] w-[56px] rounded-[8px] items-center justify-center bg-[#F4F6FA] text-[#626C7F] ' + getIconInfo().focusText + ' ' + getIconInfo().focusBg + ' ' + getIconInfo().activeBg + ' ' + getIconInfo().activeText + ' ' + getIconInfo().hoverText + ' ' + getIconInfo().hoverBg}>
+              A
             </div>
             <p className='inline align-middle p-[32px]'>
               {quizQuestion.options[3]}
             </p>
-          </div>
+          </button>
           <Link href={getNextPageNum()}>
-            <div className='px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-[#A729F5] align-middle rounded-[24px] text-[28px]'>
+            <button className={'px-[20px] mb-[24px] h-[92px] w-full shadow flex items-center align-middle rounded-[24px] text-[28px] ' + getIconInfo().activeBgBtn + ' ' + getIconInfo().bgBtn}>
               <p className='inline align-middle text-center text-white w-full p-[32px]'>
                 Submit Answer
               </p>
-            </div>
+            </button>
           </Link>
         </div>
       </div>
