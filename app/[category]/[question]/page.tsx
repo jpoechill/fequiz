@@ -21,6 +21,11 @@ export default function Page({ params }: { params: { category: string, question:
   }
 
   let quiz: QuizItem = data.quizzes?.find(category => category.title.toLowerCase() === params.category)
+
+  if (!quiz) {
+    quiz = data.quizzes[0]
+  }
+
   let quizQuestion = quiz?.questions[Number(params.question)] || 0;
 
   function getNextPageNum(): string {
