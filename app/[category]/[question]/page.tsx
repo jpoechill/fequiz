@@ -11,7 +11,7 @@ export default function Page({ params }: { params: { category: string, question:
   console.log(data)
 
   let quiz = data.quizzes.find(category => category.title.toLowerCase() === params.category)
-  let quizQuestion = quiz.questions[params.question]
+  let quizQuestion = quiz?.questions[params.question]
 
   function getNextPageNum(): string {
     let currIndex = Number(params.question)
@@ -113,7 +113,7 @@ export default function Page({ params }: { params: { category: string, question:
               {quizQuestion.options[3]}
             </p>
           </div>
-          <Link href={getNextPageNum(params.question)}>
+          <Link href={getNextPageNum()}>
             <div className='px-[20px] mb-[24px] h-[92px] shadow flex items-center bg-[#A729F5] align-middle rounded-[24px] text-[28px]'>
               <p className='inline align-middle text-center text-white w-full p-[32px]'>
                 Submit Answer
