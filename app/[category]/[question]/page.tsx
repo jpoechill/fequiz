@@ -11,7 +11,7 @@ export default function Page({ params }: { params: { category: string, question:
   console.log(data)
 
   let quiz = data.quizzes?.find(category => category.title.toLowerCase() === params.category)
-  let quizQuestion = quiz?.questions[Number(params.question)]
+  let quizQuestion = quiz?.questions[Number(params.question)] || 0;
 
   function getNextPageNum(): string {
     let currIndex = Number(params.question)
