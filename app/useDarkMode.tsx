@@ -1,9 +1,9 @@
+'use client'
+
 import { useEffect, useState } from "react";
 
 function useDarkMode() {
-    const [theme, setTheme] = useState(
-        typeof window !== "undefined" ? localStorage.theme : "dark"
-    );
+    const [theme, setTheme] = useState("light");
     const colorTheme = theme === "dark" ? "light" : "dark";
 
     useEffect(() => {
