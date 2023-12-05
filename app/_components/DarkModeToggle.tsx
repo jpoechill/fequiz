@@ -21,9 +21,10 @@ const DarkModeToggle = () => {
     useEffect(() => {
         window.localStorage.setItem('theme', `${selected}`)
         const root = window.document.documentElement;
-        const colorTheme = selected === "dark" ? "light" : "dark";
-        root.classList.remove(colorTheme);
-        root.classList.add(selected);
+        const opposite = selected === "dark" ? "light" : "dark";
+
+        root.classList.remove(selected);
+        root.classList.add(opposite);
 
         setSelectedOption(`${selected}`);
     }, [local, selected])
@@ -38,13 +39,50 @@ const DarkModeToggle = () => {
     return (
         <div className='w-full flex items-center justify-end text-right mb-[40px] lrg:mb-[80px] h-[56px]'>
 
-            {selectedOption}
-            <Image src={selectedOption === "dark" ? "/images/icon-sun-light.svg" : "/images/icon-sun-dark.svg"} className="inline" height="24" width="24" alt="HTML" />
+            {/* bg-gray-200 rounded-full peer 
+                dark:bg-gray-700 
+                rtl:peer-checked:after:-translate-x-full
+                peer-checked:after:translate-x-full 
+                peer-checked:bg-[#A729F5] 
+                peer-checked:after:border-white 
+                after:content-[''] 
+                after:absolute 
+                after:top-[2px] 
+                after:start-[2px] 
+                after:bg-white 
+                after:border-gray-300 
+                after:border 
+                after:rounded-full 
+                after:h-5 
+                after:w-5 
+                after:transition-all 
+                dark:border-gray-600  */}
+            <Image src={selectedOption !== "dark" ? "/images/icon-sun-light.svg" : "/images/icon-sun-dark.svg"} className="inline" height="24" width="24" alt="HTML" />
             <label className="relative inline-flex items-center cursor-pointer mx-[16px]">
-                <input type="checkbox" checked={selectedOption === "light" ? false : true} onChange={handleChange} className="sr-only peer" />
-                <div className="w-12 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#A729F5]"></div>
+                <input type="checkbox" checked={selectedOption === "light" ? true : false} onChange={handleChange} className="sr-only peer" />
+                <div className="
+                w-12 h-6 
+                bg-gray-200 rounded-full peer 
+                dark:bg-gray-700 
+                rtl:peer-checked:after:-translate-x-full
+                peer-checked:after:translate-x-full 
+                peer-checked:bg-[#A729F5] 
+                peer-checked:after:border-white 
+                after:content-[''] 
+                after:absolute 
+                after:top-[2px] 
+                after:start-[2px] 
+                after:bg-white 
+                after:border-gray-300 
+                after:border 
+                after:rounded-full 
+                after:h-5 
+                after:w-5 
+                after:transition-all 
+                dark:border-gray-600 
+                "></div>
             </label>
-            <Image src={selectedOption === "dark" ? "/images/icon-moon-light.svg" : "/images/icon-moon-dark.svg"} className="inline" height="24" width="24" alt="HTML" />
+            <Image src={selectedOption !== "dark" ? "/images/icon-moon-light.svg" : "/images/icon-moon-dark.svg"} className="inline" height="24" width="24" alt="HTML" />
         </div>
     )
 }
