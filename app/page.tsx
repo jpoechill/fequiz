@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link';
-import DarkModeToggle from './_components/darkModeToggle'
+import DarkModeToggle from './_components/DarkModeToggle'
 
 export default function Home() {
   if (typeof window !== "undefined") {
