@@ -3,8 +3,6 @@ import Link from 'next/link';
 import data from '../../../api/data.json';
 
 export default function Page({ params }: { params: { slug: string } }) {
-  console.log(data)
-
   return <main className="flex flex-col items-center justify-between pt-[80px] w-[1160px] m-auto">
     <div className='grid w-full grid-cols-2 mb-[90px]'>
       <div className='text-[28px] flex items-center font-medium text-[#313E51]'>

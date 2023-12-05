@@ -5,15 +5,23 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation'
 import data from '../../../api/data.json';
 import { useEffect, useState } from "react";
-import DarkModeToggle from '../../darkModeToggle'
+import DarkModeToggle from '../../_components/darkModeToggle'
+import useScore from '../../useScore'
 
 export default function Page({ params }: { params: { category: string, question: string } }) {
   const router = useRouter()
   const [hasAnswer, setHasAnswer] = useState(false);
-  const [userSelect, setUserSelect] = useState(0);
+  const [userSelect, setUserSelect] = useState(-1);
+  const [showErr, setshowErr] = useState(false);
+  const [score, setScore] = useScore();
 
   function handleSubmitAnswer() {
-    setHasAnswer(true);
+    if (userSelect !== -1) {
+      setHasAnswer(true);
+      setshowErr(false)
+    } else {
+      setshowErr(true)
+    }
   }
 
   const handleUserSelect = (index) => {
@@ -38,7 +46,7 @@ export default function Page({ params }: { params: { category: string, question:
   function getNextPageNum(): string {
     let currIndex = Number(params.question)
     if (currIndex + 1 === 10) {
-      return '/score'
+      return '/' + params.category + '/' + 'score'
     } else {
       return '/' + params.category + '/' + (currIndex + 1)
     }
@@ -130,10 +138,10 @@ export default function Page({ params }: { params: { category: string, question:
   }
 
   return (
-    <main className="flex flex-col items-center justify-between pt-[80px] w-[1160px] m-auto">
+    <main className="flex flex-col items-center justify-between pt-[15px] lg:pt-[80px] px-[25px] lg:w-[1160px] m-auto">
       <div className='grid w-full grid-cols-2'>
         <Link href="/">
-          <div className='text-[28px] flex items-center font-medium text-[#313E51] dark:text-[#FFFFFF]'>
+          <div className='text-[28px] mb-[50px] flex items-center font-medium text-[#313E51] dark:text-[#FFFFFF]'>
             <div className={'h-[56px] w-[56px] rounded-[8px] flex flex-row mr-[24px] items-center justify-center ' + getIconInfo().color}>
               <Image src={getIconInfo().path} className="inline" height="40" width="40" alt="HTML" />
             </div>
@@ -141,26 +149,18 @@ export default function Page({ params }: { params: { category: string, question:
           </div>
         </Link>
         <DarkModeToggle></DarkModeToggle>
-        {/* <div className='w-full flex items-center justify-end text-right'>
-          <Image src="/images/icon-sun-dark.svg" className="inline" height="24" width="24" alt="HTML" />
-          <label className="relative inline-flex items-center cursor-pointer mx-[16px]">
-            <input type="checkbox" value="" className="sr-only peer" />
-            <div className="w-12 h-6 bg-gray-200 peer-focus:outline-none dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#A729F5]"></div>
-          </label>
-          <Image src="/images/icon-moon-dark.svg" className="inline" height="24" width="24" alt="HTML" />
-        </div> */}
       </div>
 
-      <div className='grid w-full grid-cols-2'>
-        <div className='text-left w-[465px]'>
-          <div className="italic mb-[40px] grey-navy dark:text-[#FFFFFF]">
-            Question {params.question} of 10.
+      <div className='grid w-full lg:grid-cols-2'>
+        <div className='text-left lg:w-[465px]'>
+          <div className="italic mb-[20px] lg:mb-[40px] grey-navy dark:text-[#FFFFFF]">
+            Question {Number(params.question) + 1} of 10.
           </div>
-          <p className="font-light text-[36px] dark:text-[#FFFFFF]">
+          <p className="font-medium text-[20px] lg:text-[36px] mb-[20px] lg:mb-[40px] dark:text-[#FFFFFF]">
             {quizQuestion.question}
           </p>
         </div>
-        <div>
+        <div className="">
           {/* {quizQuestion.answer} */}
           <button disabled={hasAnswer} onClick={() => handleUserSelect(0)} className={`
             ${(userSelect !== quizQuestion.answer) && hasAnswer && userSelect === 0 ? "ring ring-[#EE5454] " : ""} 
@@ -170,7 +170,7 @@ export default function Page({ params }: { params: { category: string, question:
             }>
               A
             </div>
-            <p className='inline text-left w-full align-middle p-[32px] dark:text-[#FFFFFF]'>
+            <p className='text-[20px] lg:text-[28px] inline text-left w-full align-middle p-[32px] dark:text-[#FFFFFF]'>
               {quizQuestion.options[0]}
             </p>
             <div className={'flex shrink-0 items-center justify-center'}>
@@ -186,7 +186,7 @@ export default function Page({ params }: { params: { category: string, question:
             }>
               B
             </div>
-            <p className='inline align-middle w-full p-[32px] dark:text-[#FFFFFF]'>
+            <p className='text-[20px] lg:text-[28px] inline align-middle w-full p-[32px] dark:text-[#FFFFFF]'>
               {quizQuestion.options[1]}
             </p>
             <div className={'flex shrink-0 items-center justify-center'}>
@@ -202,7 +202,7 @@ export default function Page({ params }: { params: { category: string, question:
             }>
               C
             </div>
-            <p className='inline align-middle w-full p-[32px] dark:text-[#FFFFFF]'>
+            <p className='text-[20px] lg:text-[28px] inline align-middle w-full p-[32px] dark:text-[#FFFFFF]'>
               {quizQuestion.options[2]}
             </p>
             <div className={'flex shrink-0 items-center justify-center'}>
@@ -218,29 +218,37 @@ export default function Page({ params }: { params: { category: string, question:
             }>
               D
             </div>
-            <p className='inline w-full align-middle p-[32px] dark:text-[#FFFFFF]'>
+            <p className='text-[20px] lg:text-[28px] inline w-full align-middle p-[32px] dark:text-[#FFFFFF]'>
               {quizQuestion.options[3]}
             </p>
             <div className={'flex shrink-0 items-center justify-center'}>
-
               {hasAnswer && quizQuestion.answer === 3 ? <Image src="/images/icon-correct.svg" className="inline" height="40" width="40" alt="HTML" /> : ""}
               {(userSelect !== quizQuestion.answer) && hasAnswer && userSelect === 3 ? <Image src="/images/icon-error.svg" className="inline" height="40" width="40" alt="HTML" /> : ""}
             </div>
           </button>
-          {hasAnswer ?
-            <Link href={getNextPageNum()}>
+          {
+            hasAnswer ?
+              <Link href={getNextPageNum()}>
+                <button onClick={handleSubmitAnswer} className={'px-[20px] mb-[24px] h-[92px] w-full shadow flex items-center align-middle rounded-[24px] text-[28px] ' + getIconInfo().activeBgBtn + ' ' + getIconInfo().bgBtn}>
+                  <p className='inline align-middle text-center text-white w-full p-[32px]'>
+                    Next Question
+                  </p>
+                </button>
+              </Link>
+              :
               <button onClick={handleSubmitAnswer} className={'px-[20px] mb-[24px] h-[92px] w-full shadow flex items-center align-middle rounded-[24px] text-[28px] ' + getIconInfo().activeBgBtn + ' ' + getIconInfo().bgBtn}>
                 <p className='inline align-middle text-center text-white w-full p-[32px]'>
-                  Next Question
+                  Submit Answer
                 </p>
               </button>
-            </Link>
+          }
+          {showErr ?
+            <div className='text-[#EE5454] w-full text-[24px] text-center'>
+              <Image src="/images/icon-error.svg" className="inline" height="40" width="40" alt="HTML" /> Please select an answer
+            </div>
             :
-            <button onClick={handleSubmitAnswer} className={'px-[20px] mb-[24px] h-[92px] w-full shadow flex items-center align-middle rounded-[24px] text-[28px] ' + getIconInfo().activeBgBtn + ' ' + getIconInfo().bgBtn}>
-              <p className='inline align-middle text-center text-white w-full p-[32px]'>
-                Submit Answer
-              </p>
-            </button>}
+            ""
+          }
         </div>
       </div >
     </main >

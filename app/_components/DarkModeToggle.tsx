@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import useDarkMode from "./useDarkMode";
+import useDarkMode from "../useDarkMode";
 import Image from 'next/image'
 
 const DarkModeToggle = () => {
@@ -15,7 +15,7 @@ const DarkModeToggle = () => {
     }
 
     return (
-        <div className='w-full flex items-center justify-end text-right mb-[80px] h-[56px]'>
+        <div className='w-full flex items-center justify-end text-right mb-[40px] lrg:mb-[80px] h-[56px]'>
             <Image src={colorTheme === "light" ? "/images/icon-sun-light.svg" : "/images/icon-sun-dark.svg"} className="inline" height="24" width="24" alt="HTML" />
             <label className="relative inline-flex items-center cursor-pointer mx-[16px]">
                 <input type="checkbox" checked={colorTheme === "dark" ? false : true} onChange={handleChange} className="sr-only peer" />

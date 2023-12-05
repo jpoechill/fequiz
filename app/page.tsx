@@ -2,27 +2,19 @@
 
 import Image from 'next/image'
 import Link from 'next/link';
-import DarkModeToggle from './darkModeToggle'
+import DarkModeToggle from './_components/darkModeToggle'
 
 export default function Home() {
-  // const [colorTheme, setTheme] = useDarkMode();
-
-  // // let newColorTheme = colorTheme === "dark" ? "light" : "dark"
-
-  // function handleChange() {
-  //   if (colorTheme === "light") {
-  //     setTheme("light")
-  //   } else {
-  //     setTheme("dark")
-  //   }
-  // }
+  if (typeof window !== "undefined") {
+    localStorage.setItem("score", 0);
+  }
 
   return (
-    <main className="flex flex-col items-center justify-between pt-[80px] w-[1160px] m-auto">
+    <main className="flex flex-col items-center justify-between pt-[20px] lg:pt-[80px] px-[25px] lg:w-[1160px] m-auto">
       <DarkModeToggle></DarkModeToggle>
-      <div className='grid w-full grid-cols-2'>
+      <div className='grid w-full lg:mt-[10px] lg:grid-cols-2'>
         <div className='text-left'>
-          <h1 className='leading-tight dark-navy dark:text-[#FFFFFF] mb-[65px]'>
+          <h1 className='leading-tight dark-navy lg:text-[64px] dark:text-[#FFFFFF] lg:mb-[65px] mb-[25px]'>
             <span className="font-light">
               Welcome to the
             </span> <br />
@@ -30,9 +22,9 @@ export default function Home() {
               Frontend Quiz!
             </span>
           </h1>
-          <span className="italic grey-navy dark:text-[#ABC1E1]">
+          <div className="italic grey-navy dark:text-[#ABC1E1] mb-[45px]">
             Pick a subject to get started.
-          </span>
+          </div>
         </div>
         <div className="dark:text-[#FFFFFF]">
           <Link href="/html/0">

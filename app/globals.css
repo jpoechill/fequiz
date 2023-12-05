@@ -25,7 +25,7 @@
 }
 
 h1 {
-  font-size: 64px;
+  font-size: 40px;
 }
 
 h2 {
@@ -38,6 +38,7 @@ h3 {
 
 body {
   background: #F4F6FA;
+  transform: scale(.9);
 }
 
 .shadow {
