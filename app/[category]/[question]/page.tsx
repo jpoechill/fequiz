@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation'
 import data from '../../../api/data.json';
 import { useEffect, useState } from "react";
-import DarkModeToggle from '../../_components/darkModeToggle'
+import DarkModeToggle from '../../components/darkModeToggle'
 import useScore from '../../useScore'
 
 export default function Page({ params }: { params: { category: string, question: string } }) {
