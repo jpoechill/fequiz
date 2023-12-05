@@ -4,7 +4,7 @@ import useDarkMode from "../useDarkMode";
 import Image from 'next/image'
 
 const DarkModeToggle = () => {
-    const [colorTheme, setTheme] = useDarkMode();
+    const [colorTheme, setTheme] = useDarkMode('light', 'theme');
 
     function handleChange() {
         if (colorTheme === "light") {

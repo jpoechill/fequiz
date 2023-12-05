@@ -4,13 +4,33 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react'
 
 export default function Page({ params }: { params: { category: string } }) {
-  const [score, setScore] = useState('0')
+  // const [score, setScore] = useState('0')
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setScore(localStorage.getItem('score'))
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     const stickyVal = window.localStorage.getItem('score')
+  //     setScore(stickyVal || 0)
+  //   }
+  // }, [])
+
+  const [
+    score,
+    setCount
+  ] = useStickyState(0, "score");
+
+  function useStickyState(defaultValue: number, key: string) {
+    const [value, setValue] = useState(() => {
+      const stickyValue = window.localStorage.getItem(key);
+      return stickyValue !== null
+        ? JSON.parse(stickyValue)
+        : defaultValue;
+    });
+
+    useEffect(() => {
+      window.localStorage.setItem(key, JSON.stringify(value));
+    }, [key, value]);
+    return [value, setValue];
+  }
 
 
   function getCategoryInfo(): {

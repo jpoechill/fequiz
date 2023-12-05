@@ -2,16 +2,20 @@
 
 import Image from 'next/image'
 import Link from 'next/link';
-import DarkModeToggle from './_components/DarkModeToggle'
+// import DarkModeToggle from './_components/DarkModeToggle'
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  if (typeof window !== "undefined") {
-    localStorage.setItem("score", 0);
-  }
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     localStorage.setItem("score", "0");
+  //   }
+  // }, []);
 
   return (
     <main className="flex flex-col items-center justify-between pt-[20px] lg:pt-[80px] px-[25px] lg:w-[1160px] m-auto">
-      <DarkModeToggle></DarkModeToggle>
+      {/* <DarkModeToggle></DarkModeToggle> */}
       <div className='grid w-full lg:mt-[10px] lg:grid-cols-2'>
         <div className='text-left'>
           <h1 className='leading-tight dark-navy lg:text-[64px] dark:text-[#FFFFFF] lg:mb-[65px] mb-[25px]'>

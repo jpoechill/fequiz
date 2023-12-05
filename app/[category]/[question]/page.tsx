@@ -24,24 +24,33 @@ export default function Page({ params }: { params: { category: string, question:
     }
   }
 
-  const handleUserSelect = (index) => {
+  const handleUserSelect = (index: number) => {
     setUserSelect(index);
   }
 
   interface QuizItem {
-    title: string;
-    icon: string;
-    questions: Questions[];
+    title?: string;
+    icon?: string;
+    questions?: Question[];
   }
 
-  interface Questions {
-    question: string;
-    options: string[];
-    answer: string;
+  interface Question {
+    question?: string;
+    options?: string[];
+    answer?: number;
   }
 
-  let quiz: QuizItem = data.quizzes?.find(category => category.title.toLowerCase() === params.category) || data.quizzes[0]
-  let quizQuestion = quiz?.questions[Number(params.question)] || 0;
+  let quiz: QuizItem = data.quizzes.find(category => category.title.toLowerCase() === params.category) || data.quizzes[0]
+
+  let quizQuestion: Question = {
+    question: "",
+    options: [],
+    answer: 0
+  }
+
+  // if (quiz.questions[Number(params.question)] && quiz.questions[Number(params.question)].options) {
+  //   quizQuestion = quiz.questions[Number(params.question)]
+  // }
 
   function getNextPageNum(): string {
     let currIndex = Number(params.question)
@@ -171,7 +180,7 @@ export default function Page({ params }: { params: { category: string, question:
               A
             </div>
             <p className='text-[20px] lg:text-[28px] inline text-left w-full align-middle p-[32px] dark:text-[#FFFFFF]'>
-              {quizQuestion.options[0]}
+              {quizQuestion.options ? quizQuestion.options[0] : ''}
             </p>
             <div className={'flex shrink-0 items-center justify-center'}>
               {hasAnswer && quizQuestion.answer === 0 ? <Image src="/images/icon-correct.svg" className="inline" height="40" width="40" alt="HTML" /> : ""}
@@ -187,7 +196,7 @@ export default function Page({ params }: { params: { category: string, question:
               B
             </div>
             <p className='text-[20px] lg:text-[28px] inline align-middle w-full p-[32px] dark:text-[#FFFFFF]'>
-              {quizQuestion.options[1]}
+              {quizQuestion.options ? quizQuestion.options[1] : ''}
             </p>
             <div className={'flex shrink-0 items-center justify-center'}>
               {hasAnswer && quizQuestion.answer === 1 ? <Image src="/images/icon-correct.svg" className="inline" height="40" width="40" alt="HTML" /> : ""}
@@ -203,7 +212,7 @@ export default function Page({ params }: { params: { category: string, question:
               C
             </div>
             <p className='text-[20px] lg:text-[28px] inline align-middle w-full p-[32px] dark:text-[#FFFFFF]'>
-              {quizQuestion.options[2]}
+              {quizQuestion.options ? quizQuestion.options[2] : ''}
             </p>
             <div className={'flex shrink-0 items-center justify-center'}>
               {hasAnswer && quizQuestion.answer === 2 ? <Image src="/images/icon-correct.svg" className="inline" height="40" width="40" alt="HTML" /> : ""}
@@ -219,7 +228,7 @@ export default function Page({ params }: { params: { category: string, question:
               D
             </div>
             <p className='text-[20px] lg:text-[28px] inline w-full align-middle p-[32px] dark:text-[#FFFFFF]'>
-              {quizQuestion.options[3]}
+              {quizQuestion.options ? quizQuestion.options[3] : ''}
             </p>
             <div className={'flex shrink-0 items-center justify-center'}>
               {hasAnswer && quizQuestion.answer === 3 ? <Image src="/images/icon-correct.svg" className="inline" height="40" width="40" alt="HTML" /> : ""}
@@ -252,7 +261,6 @@ export default function Page({ params }: { params: { category: string, question:
         </div>
       </div >
     </main >
-
   )
 }
 

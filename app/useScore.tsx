@@ -8,7 +8,7 @@ function useScore() {
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            localStorage.setItem("score", newScore);
+            localStorage.setItem("score", String(newScore));
         }
     }, [newScore]);
 
