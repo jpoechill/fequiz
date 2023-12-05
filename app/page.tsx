@@ -3,8 +3,14 @@
 import Image from 'next/image'
 import Link from 'next/link';
 import DarkModeToggle from './_components/DarkModeToggle'
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("score", 0);
+    }
+  }, []);
 
   return (
     <main className="flex flex-col items-center justify-between pt-[20px] lg:pt-[80px] px-[25px] lg:w-[1160px] m-auto">
