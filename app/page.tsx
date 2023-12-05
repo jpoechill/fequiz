@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   useEffect(() => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("score", 0);
+      localStorage.setItem("score", String(0));
     }
   }, []);
 
