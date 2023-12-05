@@ -48,9 +48,12 @@ export default function Page({ params }: { params: { category: string, question:
     answer: 0
   }
 
-  // if (quiz.questions[Number(params.question)] && quiz.questions[Number(params.question)].options) {
-  //   quizQuestion = quiz.questions[Number(params.question)]
-  // }
+
+  let quizID = Number(params.question)
+
+  if (quiz.questions !== undefined) {
+    quizQuestion = quiz.questions[quizID]
+  }
 
   function getNextPageNum(): string {
     let currIndex = Number(params.question)
