@@ -6,21 +6,35 @@ import { useRouter } from 'next/navigation'
 import data from '../../../api/data.json';
 import { useEffect, useState } from "react";
 import DarkModeToggle from '../../_components/DarkModeToggle'
-import useScore from '../../useScore'
 
 export default function Page({ params }: { params: { category: string, question: string } }) {
   const router = useRouter()
   const [hasAnswer, setHasAnswer] = useState(false);
   const [userSelect, setUserSelect] = useState(-1);
   const [showErr, setshowErr] = useState(false);
-  const [score, setScore] = useScore();
 
   function handleSubmitAnswer() {
     if (userSelect !== -1) {
       setHasAnswer(true);
+      checkIfAnswerIsCorrect(userSelect)
       setshowErr(false)
     } else {
       setshowErr(true)
+    }
+  }
+
+  function checkIfAnswerIsCorrect(userSelect: number) {
+    if (userSelect === quizQuestion.answer) {
+
+      if (typeof window !== "undefined") {
+        let currScore: number = Number(window.localStorage.getItem('score')) || 0;
+
+        currScore++
+        window.localStorage.setItem("score", String(currScore));
+
+        // alert('update localstorage')
+
+      }
     }
   }
 

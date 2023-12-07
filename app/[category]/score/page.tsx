@@ -4,15 +4,6 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react'
 
 export default function Page({ params }: { params: { category: string } }) {
-  // const [score, setScore] = useState('0')
-
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined') {
-  //     const stickyVal = window.localStorage.getItem('score')
-  //     setScore(stickyVal || 0)
-  //   }
-  // }, [])
-
   const [
     score,
     setCount
@@ -38,12 +29,14 @@ export default function Page({ params }: { params: { category: string } }) {
     path: string;
     color: string;
     activeBg: string;
+    bgColor: string;
   } {
     let iconInfo = {
       fullName: '',
       path: '',
       color: '',
       activeBg: '',
+      bgColor: ''
     }
 
     switch (params.category) {
@@ -51,22 +44,26 @@ export default function Page({ params }: { params: { category: string } }) {
         iconInfo.fullName = 'HTML'
         iconInfo.path = '../../../../../images/icon-html.svg'
         iconInfo.color = 'bg-[#FF7E35]'
+        iconInfo.bgColor = 'bg-[#FFF2E9]'
         iconInfo.activeBg = 'group-active:bg-[#FF7E35]'
         break;
       case 'css':
         iconInfo.fullName = 'HTML'
         iconInfo.path = '/images/icon-css.svg'
         iconInfo.color = 'bg-[#2FD887]'
+        iconInfo.bgColor = 'bg-[#E1FDEF]'
         break;
       case 'javascript':
         iconInfo.fullName = 'HTML'
         iconInfo.path = '/images/icon-js.svg'
         iconInfo.color = 'bg-[#306AFF]'
+        iconInfo.bgColor = 'bg-[#EBF0FF]'
         break;
       case 'accessibility':
         iconInfo.fullName = 'Accessibility'
         iconInfo.path = '/images/icon-accessibility.svg'
         iconInfo.color = 'bg-[#A729F5]'
+        iconInfo.bgColor = 'bg-[#F7E7FF]'
         break;
     }
 
@@ -76,12 +73,14 @@ export default function Page({ params }: { params: { category: string } }) {
   return (
     <main className="flex flex-col items-center justify-between pt-[15px] lg:pt-[80px] px-[25px] lg:w-[1160px] m-auto">
       <div className='grid w-full grid-cols-2'>
-        <div className='text-[28px] mb-[40px] lg:mb-[50px] flex items-center font-medium text-[#313E51] dark:text-[#FFFFFF]'>
-          <div className='h-[56px] w-[56px] rounded-[8px] flex flex-row mr-[24px] items-center justify-center bg-[#FFF1E9]'>
-            <Image src={getCategoryInfo().path} className="inline" height="40" width="40" alt="HTML" />
+        <Link href="/">
+          <div className='text-[28px] mb-[40px] lg:mb-[50px] flex items-center font-medium text-[#313E51] dark:text-[#FFFFFF]'>
+            <div className={'h-[56px] w-[56px] rounded-[8px] flex flex-row mr-[24px] items-center justify-center ' + getCategoryInfo().bgColor}>
+              <Image src={getCategoryInfo().path} className="inline" height="40" width="40" alt="HTML" />
+            </div>
+            <div className='inline dark:text-[#FFFFFF]'>{getCategoryInfo().fullName}</div>
           </div>
-          <div className='inline dark:text-[#FFFFFF]'>{getCategoryInfo().fullName}</div>
-        </div>
+        </Link>
         <div className='w-full flex items-center justify-end text-right'>
           <Image src="/images/icon-sun-dark.svg" className="inline" height="24" width="24" alt="HTML" />
           <label className="relative inline-flex items-center cursor-pointer mx-[16px]">
