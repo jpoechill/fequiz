@@ -15,8 +15,8 @@ export default function Page({ params }: { params: { category: string, question:
 
   function handleSubmitAnswer() {
     if (userSelect !== -1) {
-      setHasAnswer(true);
       checkIfAnswerIsCorrect(userSelect)
+      setHasAnswer(true);
       setshowErr(false)
     } else {
       setshowErr(true)
@@ -24,16 +24,12 @@ export default function Page({ params }: { params: { category: string, question:
   }
 
   function checkIfAnswerIsCorrect(userSelect: number) {
-    if (userSelect === quizQuestion.answer) {
-
+    if (!hasAnswer && userSelect === quizQuestion.answer) {
       if (typeof window !== "undefined") {
         let currScore: number = Number(window.localStorage.getItem('score')) || 0;
 
         currScore++
         window.localStorage.setItem("score", String(currScore));
-
-        // alert('update localstorage')
-
       }
     }
   }
